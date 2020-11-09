@@ -1,4 +1,4 @@
-package com.own.backend.enums;
+package com.own.backend.admin.Enums;
 
 /**
  * @Author fangting

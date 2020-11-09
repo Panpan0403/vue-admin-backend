@@ -3,7 +3,7 @@ package com.own.backend.admin.Entity;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.Version;
-import com.own.backend.enums.EnumDelete;
+import com.own.backend.admin.Enums.EnumDelete;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

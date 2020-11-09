@@ -6,6 +6,7 @@ import com.own.backend.admin.Mapper.UserMapper;
 import com.own.backend.admin.Request.SaveUserReq;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -21,14 +22,12 @@ public class UserService extends ServiceImpl<UserMapper, User> {
     /**
      * 新增用户
      */
-    public boolean saveUser(SaveUserReq userReq){
-        User user = new User();
-        BeanUtils.copyProperties(userReq, user);
+    @Transactional(rollbackFor = Exception.class)
+    public boolean saveUser(User user){
         user.setId(idService.nextId());
         user.setCreateBy("admin");
         user.setUpdateBy("admin");
-        this.save(user);
-        return true;
+        return this.save(user);
     }
 
     /**

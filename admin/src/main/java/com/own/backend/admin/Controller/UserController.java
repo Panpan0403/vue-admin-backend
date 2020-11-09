@@ -1,10 +1,10 @@
 package com.own.backend.admin.Controller;
 
+import com.own.backend.admin.Common.Result;
 import com.own.backend.admin.Entity.User;
 import com.own.backend.admin.Request.SaveUserReq;
 import com.own.backend.admin.Request.UserIdReq;
 import com.own.backend.admin.Service.UserService;
-import com.own.backend.api.CommonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
@@ -26,19 +26,19 @@ public class UserController {
 
     @ApiOperation("新增用户")
     @PostMapping("save")
-    public CommonResult<Boolean> save(@RequestBody SaveUserReq userReq){
-        return CommonResult.success(userService.saveUser(userReq));
+    public Result<Boolean> save(@RequestBody SaveUserReq userReq){
+        return Result.success(userService.saveUser(userReq.toUser(userReq)));
     }
 
     @ApiOperation("更新用户")
     @PostMapping("update")
-    public CommonResult<Boolean> update(@RequestBody User user){
-        return CommonResult.success(userService.updateUser(user));
+    public Result<Boolean> update(@RequestBody User user){
+        return Result.success(userService.updateUser(user));
     }
 
     @ApiOperation("获取用户")
     @GetMapping("getUser")
-    public CommonResult<User> get(@RequestBody UserIdReq idReq){
-        return CommonResult.success(userService.getUser(idReq.getUserId()));
+    public Result<User> get(@RequestBody UserIdReq idReq){
+        return Result.success(userService.getUser(idReq.getUserId()));
     }
 }
