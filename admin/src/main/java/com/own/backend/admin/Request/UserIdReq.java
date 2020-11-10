@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 /**
  * @Author fangting
@@ -15,6 +15,6 @@ import javax.validation.constraints.NotEmpty;
 @Data
 public class UserIdReq {
     @ApiModelProperty("用户Id")
-    @NotEmpty(message = "用户Id不能为空")
+    @NotNull(message = "用户Id不能为空")
     public Long userId;
 }

@@ -7,9 +7,11 @@ import com.own.backend.admin.Request.UserIdReq;
 import com.own.backend.admin.Service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 /**
  * @Author fangting
@@ -26,7 +28,7 @@ public class UserController {
 
     @ApiOperation("新增用户")
     @PostMapping("save")
-    public Result<Boolean> save(@RequestBody SaveUserReq userReq){
+    public Result<Boolean> save(@Valid @RequestBody SaveUserReq userReq){
         return Result.success(userService.saveUser(userReq.toUser(userReq)));
     }
 

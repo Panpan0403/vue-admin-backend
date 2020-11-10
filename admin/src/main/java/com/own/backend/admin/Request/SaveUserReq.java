@@ -6,7 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 
 /**
  * @Author fangting
@@ -18,11 +18,11 @@ import javax.validation.constraints.NotEmpty;
 public class SaveUserReq {
 
     @ApiModelProperty("用户名")
-    @NotEmpty(message = "用户名不能为空")
+    @NotBlank(message = "用户名不能为空")
     private String username;
 
     @ApiModelProperty("密码")
-    @NotEmpty(message = "密码不能为空")
+    @NotBlank(message = "密码不能为空")
     private String password;
 
     public User toUser(SaveUserReq userReq) {

@@ -15,7 +15,7 @@ import javax.annotation.Resource;
 /**
  * @Author fangting
  * @create 2020/11/9 10:52
- * @description 切片
+ * @description 用户切片
  **/
 @Aspect
 @Component
@@ -24,7 +24,7 @@ public class UserAspect {
     @Resource
     private UserService userService;
 
-    @Pointcut("execution( * com.own.backend.admin.Service.UserService.*(..))&&args(user)")
+    @Pointcut("execution( * com.own.backend.admin.Service.UserService.saveUser(com.own.backend.admin.Entity.User,..))&&args(user,..)")
     public void pointcutSave(User user) {
     }
 
