@@ -25,6 +25,9 @@ public class User extends BaseEntity{
     @ApiModelProperty("用户名")
     private String username;
 
-    @ApiModelProperty("密码")
-    private String password;
+    @ApiModelProperty("头像")
+    private String avatar = "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif";
+
+    @ApiModelProperty("介绍")
+    private String introduction = "这个人很懒什么也没有留下。";
 }

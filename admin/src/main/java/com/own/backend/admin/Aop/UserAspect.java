@@ -1,4 +1,4 @@
-package com.own.backend.admin.Aspect;
+package com.own.backend.admin.Aop;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.own.backend.admin.Common.BusinessException;

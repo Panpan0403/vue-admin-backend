@@ -1,5 +1,6 @@
 package com.own.backend.admin.Request;
 
+import com.own.backend.admin.Entity.Login;
 import com.own.backend.admin.Entity.User;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -15,7 +16,7 @@ import javax.validation.constraints.NotBlank;
  **/
 @Data
 @ApiModel("新增用户请求参数")
-public class SaveUserReq {
+public class UserReq {
 
     @ApiModelProperty("用户名")
     @NotBlank(message = "用户名不能为空")
@@ -25,9 +26,15 @@ public class SaveUserReq {
     @NotBlank(message = "密码不能为空")
     private String password;
 
-    public User toUser(SaveUserReq userReq) {
+    public User toUser(UserReq userReq) {
         User user = new User();
         BeanUtils.copyProperties(userReq, user);
         return user;
+    }
+
+    public Login toLogin(UserReq userReq) {
+        Login login = new Login();
+        BeanUtils.copyProperties(userReq, login);
+        return login;
     }
 }

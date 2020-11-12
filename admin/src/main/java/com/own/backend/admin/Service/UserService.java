@@ -1,14 +1,16 @@
 package com.own.backend.admin.Service;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.own.backend.admin.Entity.Login;
 import com.own.backend.admin.Entity.User;
 import com.own.backend.admin.Mapper.UserMapper;
-import com.own.backend.admin.Request.SaveUserReq;
+import com.own.backend.admin.Request.LoginReq;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 /**
  * @Author fangting
@@ -19,15 +21,21 @@ import javax.annotation.Resource;
 public class UserService extends ServiceImpl<UserMapper, User> {
     @Resource
     private SnowFlakeIdService idService;
+    @Resource
+    private LoginService loginService;
+
     /**
      * 新增用户
      */
     @Transactional(rollbackFor = Exception.class)
-    public boolean saveUser(User user){
-        user.setId(idService.nextId());
+    public boolean saveUser(User user, Login login){
+        Long id = idService.nextId();
+        user.setId(id);
         user.setCreateBy("admin");
         user.setUpdateBy("admin");
-        return this.save(user);
+        login.setUid(id);
+        BeanUtils.copyProperties(user, login);
+        return this.save(user) && loginService.save(login);
     }
 
     /**
@@ -43,4 +51,5 @@ public class UserService extends ServiceImpl<UserMapper, User> {
     public User getUser(Long userId){
         return this.getById(userId);
     }
+
 }

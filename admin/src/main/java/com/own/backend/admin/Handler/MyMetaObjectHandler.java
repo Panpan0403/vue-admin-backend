@@ -1,6 +1,7 @@
 package com.own.backend.admin.Handler;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
+import com.own.backend.admin.Enums.EnumDelete;
 import org.apache.ibatis.reflection.MetaObject;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +18,7 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
     public void insertFill(MetaObject metaObject) {
         this.setFieldValByName("createTime", LocalDateTime.now(), metaObject);
         this.setFieldValByName("updateTime", LocalDateTime.now(), metaObject);
+        this.setFieldValByName("isDelete", EnumDelete.N, metaObject);
     }
 
     @Override

@@ -33,7 +33,7 @@ public class BaseEntity {
     private String updateBy;
 
     @ApiModelProperty("是否删除")
-    private EnumDelete isDelete = EnumDelete.N;
+    private String isDelete;
 
     @ApiModelProperty("版本")
     @Version

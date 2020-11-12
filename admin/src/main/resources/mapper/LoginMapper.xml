@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.own.backend.admin.Mapper.LoginMapper">
+
+    <select id="login" resultType="java.lang.Long">
+        SELECT
+            uid
+        FROM
+            login l
+            JOIN user u ON u.id = l.uid
+        WHERE
+            u.username = #{username}
+            AND l.password = #{password}
+            AND u.is_delete = 'N'
+            AND l.is_delete = 'N'
+    </select>
+
+</mapper>
