@@ -31,7 +31,7 @@ public class Swagger2Config{
     }
 
     private ApiInfo apiInfo(){
-        return new ApiInfoBuilder().title("VUE_ADMIN_BACKEND").description("").contact(new Contact("fangting", "", "897045322@qq.com"))
+        return new ApiInfoBuilder().title("VUE_ADMIN_BACKEND").description("").contact(new Contact("fangTing", "", "897045322@qq.com"))
                 .version("1.0").build();
     }
 }

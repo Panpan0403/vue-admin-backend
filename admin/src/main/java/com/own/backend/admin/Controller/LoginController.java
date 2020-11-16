@@ -28,10 +28,6 @@ public class LoginController {
     @ApiOperation("登录")
     @PostMapping("login")
     public Result<String> login(@Valid @RequestBody LoginReq loginReq){
-        String token = loginService.login(loginReq);
-        if(token == null)
-            throw new BusinessException(Code.LOGIN_FAILED);
-        return Result.success(token);
+        return Result.success(loginService.login(loginReq));
     }
-
 }
