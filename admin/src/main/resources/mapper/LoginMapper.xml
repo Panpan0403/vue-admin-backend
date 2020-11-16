@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.own.backend.admin.Mapper.LoginMapper">
 
-    <select id="login" resultType="java.lang.Long">
+    <select id="login" resultType="com.own.backend.admin.Entity.User">
         SELECT
-            uid
+            u.*
         FROM
-            login l
-            JOIN user u ON u.id = l.uid
+            user u
+            JOIN login l ON u.id = l.uid
         WHERE
             u.username = #{username}
             AND l.password = #{password}

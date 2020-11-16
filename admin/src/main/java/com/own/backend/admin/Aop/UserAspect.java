@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.own.backend.admin.Common.BusinessException;
 import com.own.backend.admin.Entity.User;
 import com.own.backend.admin.Enums.Code;
-import com.own.backend.admin.Service.UserService;
+import com.own.backend.admin.Service.ServiceImpl.UserService;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -24,7 +24,7 @@ public class UserAspect {
     @Resource
     private UserService userService;
 
-    @Pointcut("execution( * com.own.backend.admin.Service.UserService.saveUser(com.own.backend.admin.Entity.User,..))&&args(user,..)")
+    @Pointcut("execution( * com.own.backend.admin.Service.ServiceImpl.UserService.saveUser(com.own.backend.admin.Entity.User,..))&&args(user,..)")
     public void pointcutSave(User user) {
     }
 
@@ -34,6 +34,6 @@ public class UserAspect {
         wrapper.lambda().eq(User::getUsername, user.getUsername());
         User res = userService.getOne(wrapper);
         if(res != null)
-            throw new BusinessException(Code.USEREXIST);
+            throw new BusinessException(Code.USERNAME_EXIST);
     }
 }

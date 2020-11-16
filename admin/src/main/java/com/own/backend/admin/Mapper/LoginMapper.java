@@ -2,6 +2,7 @@ package com.own.backend.admin.Mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.own.backend.admin.Entity.Login;
+import com.own.backend.admin.Entity.User;
 
 /**
  * @Author fangting
@@ -12,5 +13,5 @@ public interface LoginMapper extends BaseMapper<Login> {
     /**
      * 登录
      */
-    Long login(String username, String password);
+    User login(String username, String password);
 }

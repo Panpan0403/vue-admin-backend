@@ -1,15 +1,21 @@
 package com.own.backend.admin.Controller;
 
 import com.own.backend.admin.Common.Result;
+import com.own.backend.admin.Config.JwtConfig;
 import com.own.backend.admin.Entity.User;
+import com.own.backend.admin.Enums.Code;
 import com.own.backend.admin.Request.UserReq;
 import com.own.backend.admin.Request.UserIdReq;
-import com.own.backend.admin.Service.UserService;
+import com.own.backend.admin.Service.ServiceImpl.UserService;
+import com.own.backend.admin.Util.JwtTokenUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 /**
@@ -41,5 +47,20 @@ public class UserController {
     @GetMapping
     public Result<User> get(@RequestBody UserIdReq idReq){
         return Result.success(userService.getUser(idReq.getUserId()));
+    }
+
+
+    @GetMapping("/getUserByToken")
+    @ApiOperation(value = "根据token得到用户信息")
+    public Result getUserDetailByToken(HttpServletRequest request, HttpServletResponse response) {
+        String token = request.getHeader(JwtConfig.TOKEN_HEADER);
+        response.setContentType("application/json;charset=UTF-8");
+        if (token != null && StringUtils.startsWith(token, JwtConfig.TOKEN_PREFIX)) {
+            token = StringUtils.substring(token, JwtConfig.TOKEN_PREFIX.length());
+            User user = userService.getByName(JwtTokenUtils.getUsername(token));
+            return Result.success(user);
+        } else {
+            return new Result(Code.PERMISSION_TOKEN_EXPIRED.getCode(), Code.PERMISSION_TOKEN_EXPIRED.getMessage());
+        }
     }
 }

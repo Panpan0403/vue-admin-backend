@@ -1,4 +1,4 @@
-package com.own.backend.admin.Service;
+package com.own.backend.admin.Service.ServiceImpl;
 
 import com.own.backend.admin.Config.SnowFlake;
 import org.springframework.stereotype.Service;

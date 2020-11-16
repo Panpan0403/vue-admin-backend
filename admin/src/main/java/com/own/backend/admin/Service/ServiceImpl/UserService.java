@@ -1,16 +1,16 @@
-package com.own.backend.admin.Service;
+package com.own.backend.admin.Service.ServiceImpl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.own.backend.admin.Entity.Login;
 import com.own.backend.admin.Entity.User;
 import com.own.backend.admin.Mapper.UserMapper;
-import com.own.backend.admin.Request.LoginReq;
+import com.own.backend.admin.Service.BaseInterface;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import javax.validation.Valid;
 
 /**
  * @Author fangting
@@ -18,7 +18,7 @@ import javax.validation.Valid;
  * @description
  **/
 @Service
-public class UserService extends ServiceImpl<UserMapper, User> {
+public class UserService extends ServiceImpl<UserMapper, User> implements BaseInterface<User> {
     @Resource
     private SnowFlakeIdService idService;
     @Resource
@@ -52,4 +52,10 @@ public class UserService extends ServiceImpl<UserMapper, User> {
         return this.getById(userId);
     }
 
+    @Override
+    public User getByName(String name) {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(User::getUsername, name);
+        return getOne(queryWrapper);
+    }
 }

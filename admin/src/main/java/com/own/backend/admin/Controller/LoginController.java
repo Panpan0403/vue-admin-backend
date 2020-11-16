@@ -4,13 +4,10 @@ import com.own.backend.admin.Common.BusinessException;
 import com.own.backend.admin.Common.Result;
 import com.own.backend.admin.Enums.Code;
 import com.own.backend.admin.Request.LoginReq;
-import com.own.backend.admin.Service.LoginService;
-import io.swagger.annotations.ApiModel;
+import com.own.backend.admin.Service.ServiceImpl.LoginService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
@@ -22,7 +19,7 @@ import javax.validation.Valid;
  **/
 @RestController
 @RequestMapping("/")
-@ApiModel("登录")
+@Api(value = "登录模块", tags = "登录模块")
 public class LoginController {
 
     @Resource
@@ -30,10 +27,11 @@ public class LoginController {
 
     @ApiOperation("登录")
     @PostMapping("login")
-    public Result<Long> login(@Valid @RequestBody LoginReq loginReq){
-        Long uid = loginService.login(loginReq);
-        if(uid == null)
-            throw new BusinessException(Code.USEREXIST);
-        return Result.success(uid);
+    public Result<String> login(@Valid @RequestBody LoginReq loginReq){
+        String token = loginService.login(loginReq);
+        if(token == null)
+            throw new BusinessException(Code.LOGIN_FAILED);
+        return Result.success(token);
     }
+
 }
