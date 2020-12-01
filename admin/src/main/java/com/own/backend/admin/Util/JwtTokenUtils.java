@@ -21,7 +21,6 @@ public class JwtTokenUtils {
      * 创建token
      */
     public static String createToken(User user){
-        // 如果选择记住我，则token的过期时间为
         long expiration = EXPIRATION;
 
         HashMap<String, Object> map = new HashMap<>();

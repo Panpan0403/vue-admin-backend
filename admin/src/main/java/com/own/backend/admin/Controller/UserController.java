@@ -45,8 +45,8 @@ public class UserController {
 
     @ApiOperation("获取用户")
     @GetMapping
-    public Result<User> get(@RequestParam UserIdReq idReq){
-        return Result.success(userService.getUser(idReq.getUserId()));
+    public Result<User> get(@RequestParam Long id){
+        return Result.success(userService.getUser(id));
     }
 
 

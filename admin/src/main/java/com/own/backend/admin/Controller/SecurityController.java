@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.own.backend.admin.Common.BusinessException;
 import com.own.backend.admin.Enums.Code;
+import io.swagger.annotations.Api;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.web.DefaultRedirectStrategy;
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("auth")
+@Api(value = "身份验证", tags = "身份验证")
 public class SecurityController {
 
     private RequestCache requestCache = new HttpSessionRequestCache();
@@ -43,7 +45,6 @@ public class SecurityController {
     @GetMapping
     @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
     public void requireAuthentication(HttpServletRequest request, HttpServletResponse response){
-
         SavedRequest savedRequest = requestCache.getRequest(request, response);
 
         if (savedRequest != null) {

@@ -2,6 +2,7 @@ package com.own.backend.admin.Service.ServiceImpl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.own.backend.admin.Common.BusinessException;
+import com.own.backend.admin.Config.JwtConfig;
 import com.own.backend.admin.Entity.Login;
 import com.own.backend.admin.Entity.User;
 import com.own.backend.admin.Enums.Code;
@@ -27,6 +28,6 @@ public class LoginService extends ServiceImpl<LoginMapper, Login>{
         User user = baseMapper.login(loginReq.getUsername(), loginReq.getPassword());
         if(user == null)
             throw new BusinessException(Code.LOGIN_FAILED);
-        else return JwtTokenUtils.createToken(user);
+        else return JwtConfig.TOKEN_PREFIX + JwtTokenUtils.createToken(user);
     }
 }
