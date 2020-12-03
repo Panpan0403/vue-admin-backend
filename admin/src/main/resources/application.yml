@@ -4,7 +4,7 @@ server:
     context-path: "/vue-admin-backend"
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/vue_admin_backend?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
+    url: jdbc:mysql://localhost:3306/vue-admin-backend?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
     username: root
     password: 123456
 
