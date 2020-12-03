@@ -7,7 +7,7 @@ import lombok.Getter;
 /**
  * @Author fangting
  * @create 2020/11/4 16:04
- * @description
+ * @description 删除枚举
  **/
 @Getter
 public enum EnumDelete {

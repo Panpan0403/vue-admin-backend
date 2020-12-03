@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 /**
  * @Author fangting
  * @create 2020/11/6 15:22
- * @description
+ * @description mybatis-plus自动填充
  **/
 @Component
 public class MyMetaObjectHandler implements MetaObjectHandler {

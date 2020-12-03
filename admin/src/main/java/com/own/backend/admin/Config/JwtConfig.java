@@ -1,13 +1,12 @@
 package com.own.backend.admin.Config;
 
-import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
  * @Author fangting
  * @create 2020/11/16 14:47
- * @description
+ * @description JWT配置
  **/
 @Component
 public class JwtConfig {

@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 /**
  * @Author fangting
  * @create 2020/11/4 15:23
- * @description
+ * @description 基础实体
  **/
 @ApiModel("基础实体")
 @Data

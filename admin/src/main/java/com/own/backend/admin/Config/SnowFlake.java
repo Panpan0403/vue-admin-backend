@@ -1,5 +1,8 @@
 package com.own.backend.admin.Config;
 
+/**
+ * 雪花ID
+ */
 public class SnowFlake {
 
     //下面两个每个5位，加起来就是10位的工作机器id

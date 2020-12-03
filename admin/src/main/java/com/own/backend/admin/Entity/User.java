@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * @Author fangting
  * @create 2020/11/3 18:42
- * @description
+ * @description 用户实体
  **/
 @ApiModel("用户表")
 @Data

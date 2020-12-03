@@ -10,7 +10,7 @@ import lombok.Data;
 /**
  * @Author fangting
  * @create 2020/11/10 15:53
- * @description
+ * @description 登录实体
  **/
 @ApiModel("登陆表")
 @Data

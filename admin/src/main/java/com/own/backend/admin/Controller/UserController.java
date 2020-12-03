@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * @Author fangting
  * @create 2020/11/3 14:19
- * @description
+ * @description 用户模块
  **/
 @RestController
 @RequestMapping("user")

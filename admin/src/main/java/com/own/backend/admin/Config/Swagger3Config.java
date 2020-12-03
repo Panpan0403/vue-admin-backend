@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * @Author fangting
  * @create 2020/11/4 13:45
- * @description
+ * @description swagger配置
  **/
 @Configuration
 public class Swagger3Config {

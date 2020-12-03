@@ -8,9 +8,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 /**
  * @Author fangting
  * @create 2020/12/1 13:51
- * @description
+ * @description 解决swagger index页面访问不到的问题
  **/
-@Configuration
 public class WebMvcConfig extends WebMvcConfigurationSupport {
 
     @Override
