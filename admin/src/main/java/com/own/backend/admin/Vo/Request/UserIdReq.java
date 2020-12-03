@@ -1,4 +1,4 @@
-package com.own.backend.admin.Request;
+package com.own.backend.admin.Vo.Request;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

@@ -7,7 +7,8 @@ import com.own.backend.admin.Entity.Login;
 import com.own.backend.admin.Entity.User;
 import com.own.backend.admin.Enums.Code;
 import com.own.backend.admin.Mapper.LoginMapper;
-import com.own.backend.admin.Request.LoginReq;
+import com.own.backend.admin.Vo.Reponse.TokenRep;
+import com.own.backend.admin.Vo.Request.LoginReq;
 import com.own.backend.admin.Util.JwtTokenUtils;
 import org.springframework.stereotype.Service;
 
@@ -24,10 +25,10 @@ public class LoginService extends ServiceImpl<LoginMapper, Login>{
     /**
      * 登录验证
      */
-    public String login(@Valid LoginReq loginReq) {
+    public TokenRep login(@Valid LoginReq loginReq) {
         User user = baseMapper.login(loginReq.getUsername(), loginReq.getPassword());
         if(user == null)
             throw new BusinessException(Code.LOGIN_FAILED);
-        else return JwtConfig.TOKEN_PREFIX + JwtTokenUtils.createToken(user);
+        else return new TokenRep(JwtConfig.TOKEN_PREFIX + JwtTokenUtils.createToken(user));
     }
 }

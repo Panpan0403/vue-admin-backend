@@ -44,14 +44,13 @@ public class SecurityController {
      */
     @GetMapping
     @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
-    public void requireAuthentication(HttpServletRequest request, HttpServletResponse response){
+    public void requireAuthentication(HttpServletRequest request, HttpServletResponse response) throws IOException {
         SavedRequest savedRequest = requestCache.getRequest(request, response);
 
         if (savedRequest != null) {
             String targetUrl = savedRequest.getRedirectUrl();
             if (StringUtils.endsWithIgnoreCase(targetUrl, ".html")) {
-                // TODO 跳转到登陆页面
-                //redirectStrategy.sendRedirect(request, response, "/login.html");
+                redirectStrategy.sendRedirect(request, response, "/login.html");
             }
         }
         throw new BusinessException(Code.NO_LOGIN);

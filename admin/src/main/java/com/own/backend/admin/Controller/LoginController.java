@@ -1,9 +1,8 @@
 package com.own.backend.admin.Controller;
 
-import com.own.backend.admin.Common.BusinessException;
-import com.own.backend.admin.Common.Result;
-import com.own.backend.admin.Enums.Code;
-import com.own.backend.admin.Request.LoginReq;
+import com.own.backend.admin.Common.Message;
+import com.own.backend.admin.Vo.Reponse.TokenRep;
+import com.own.backend.admin.Vo.Request.LoginReq;
 import com.own.backend.admin.Service.ServiceImpl.LoginService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -27,7 +26,7 @@ public class LoginController {
 
     @ApiOperation("登录")
     @PostMapping("login")
-    public Result<String> login(@Valid @RequestBody LoginReq loginReq){
-        return Result.success(loginService.login(loginReq));
+    public Message<TokenRep> login(@Valid @RequestBody LoginReq loginReq){
+        return Message.success(loginService.login(loginReq));
     }
 }

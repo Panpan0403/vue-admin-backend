@@ -35,7 +35,9 @@ public class UserService extends ServiceImpl<UserMapper, User> implements BaseIn
         user.setUpdateBy("admin");
         login.setUid(id);
         BeanUtils.copyProperties(user, login);
-        return this.save(user) && loginService.save(login);
+        this.save(user);
+        loginService.save(login);
+        return true;
     }
 
     /**

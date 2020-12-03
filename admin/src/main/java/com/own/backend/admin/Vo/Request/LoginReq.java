@@ -1,10 +1,8 @@
-package com.own.backend.admin.Request;
+package com.own.backend.admin.Vo.Request;
 
-import com.own.backend.admin.Entity.User;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import org.springframework.beans.BeanUtils;
 
 import javax.validation.constraints.NotBlank;
 

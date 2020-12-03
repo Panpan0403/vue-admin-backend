@@ -48,8 +48,6 @@ mybatis-plus:
     #auto-mapping-unknown-column-behavior: none
     #如果查询结果中包含空值的列，则 MyBatis 在映射的时候，不会映射这个字段
     call-setters-on-nulls: true
-    # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   global-config:
     db-config:
       #表名下划线命名默认true
@@ -65,7 +63,7 @@ mybatis-plus:
 
 ##jwt配置
 jwt:
-  header: "Authorization"
+  header: "X-Token"
   prefix: "Bearer "
   secret: "jwtSecret"
   iss: "fang"

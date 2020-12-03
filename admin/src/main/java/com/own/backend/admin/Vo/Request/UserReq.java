@@ -1,4 +1,4 @@
-package com.own.backend.admin.Request;
+package com.own.backend.admin.Vo.Request;
 
 import com.own.backend.admin.Entity.Login;
 import com.own.backend.admin.Entity.User;

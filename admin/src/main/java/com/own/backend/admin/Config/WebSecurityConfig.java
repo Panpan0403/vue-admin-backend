@@ -1,16 +1,9 @@
 package com.own.backend.admin.Config;
-/**
- * Project Name:auth2
- * File Name:WebSecurityConfig.java
- * Package Name:com.briup.apps.auth2.config
- * Date:2018年9月17日上午10:23:44
- * Copyright (c) 2018, chenzhou1025@126.com All Rights Reserved.
- *
- */
 
 import com.own.backend.admin.Filter.JwtAuthenticationTokenFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -54,6 +47,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 // 设置允许访问的资源
+                .antMatchers(HttpMethod.OPTIONS).permitAll()
                 .antMatchers("/auth", "/login").permitAll()
                 // 设置允许访问的资源
                 .antMatchers("/webjars/**").permitAll()
@@ -74,6 +68,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // 添加JWT filter
         http.addFilterBefore(getAuthenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
     }
-
-
 }

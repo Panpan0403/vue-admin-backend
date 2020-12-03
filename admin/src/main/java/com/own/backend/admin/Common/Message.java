@@ -14,7 +14,7 @@ import java.io.Serializable;
  **/
 @Data
 @ApiModel("通用返回对象")
-public class Result<T> implements Serializable {
+public class Message<T> implements Serializable {
 
     private static long serialVersionUID = -6872727223667337704L;
 
@@ -27,18 +27,18 @@ public class Result<T> implements Serializable {
     @ApiModelProperty("时间戳")
     private long timestamp = System.currentTimeMillis();
 
-    public Result(int code, String message, T data) {
+    public Message(int code, String message, T data) {
         this.code = code;
         this.errMsg = message;
         this.data = data;
     }
 
-    public Result(int code, String message) {
+    public Message(int code, String message) {
         this.code = code;
         this.errMsg = message;
     }
 
-    public static <T> Result<T> success(T data) {
-        return new Result<T>((int) Code.SUCCESS.getCode(), Code.SUCCESS.getMessage(), data);
+    public static <T> Message<T> success(T data) {
+        return new Message<T>((int) Code.SUCCESS.getCode(), Code.SUCCESS.getMessage(), data);
     }
 }
