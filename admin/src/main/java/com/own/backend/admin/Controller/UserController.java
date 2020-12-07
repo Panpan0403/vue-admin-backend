@@ -53,7 +53,7 @@ public class UserController {
 
     @GetMapping("/getUserByToken")
     @ApiOperation(value = "根据token得到用户信息")
-    public Message getUserDetailByToken(HttpServletRequest request, HttpServletResponse response) {
+    public Message getUserDetailByToken(HttpServletRequest request) {
         String token = request.getHeader(JwtConfig.TOKEN_HEADER);
         if (token != null && StringUtils.startsWith(token, JwtConfig.TOKEN_PREFIX)) {
             token = StringUtils.substring(token, JwtConfig.TOKEN_PREFIX.length());

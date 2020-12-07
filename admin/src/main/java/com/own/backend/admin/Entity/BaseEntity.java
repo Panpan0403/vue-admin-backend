@@ -2,6 +2,7 @@ package com.own.backend.admin.Entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.Version;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.own.backend.admin.Enums.EnumDelete;
@@ -36,8 +37,9 @@ public class BaseEntity {
     private String updateBy;
 
     @ApiModelProperty("是否删除")
-    @TableField(fill = FieldFill.INSERT)
-    private String isDelete;
+    @TableField(select = false)
+    @TableLogic(value = "0", delval = "1")
+    private Integer isDelete = 0;
 
     @ApiModelProperty("版本")
     @Version

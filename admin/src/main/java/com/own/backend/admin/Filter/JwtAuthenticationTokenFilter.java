@@ -6,11 +6,8 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.own.backend.admin.Common.BusinessException;
 import com.own.backend.admin.Config.JwtConfig;
 import com.own.backend.admin.Entity.User;
-import com.own.backend.admin.Enums.Code;
 import com.own.backend.admin.Service.ServiceImpl.UserService;
 import com.own.backend.admin.Util.JwtTokenUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -60,9 +57,8 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
             }
         } catch (Exception e) {
-            throw new BusinessException(Code.PERMISSION_TOKEN_EXPIRED);
+            throw e;
         }
-
         filterChain.doFilter(request, response);
     }
 }

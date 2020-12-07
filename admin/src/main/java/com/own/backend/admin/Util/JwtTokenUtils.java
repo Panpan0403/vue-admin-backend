@@ -2,11 +2,17 @@ package com.own.backend.admin.Util;
 
 import java.util.Date;
 import java.util.HashMap;
+
+import com.own.backend.admin.Common.BusinessException;
 import com.own.backend.admin.Entity.User;
 
+import com.own.backend.admin.Enums.Code;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+
+import javax.swing.plaf.synth.SynthScrollBarUI;
 
 import static com.own.backend.admin.Config.JwtConfig.*;
 
@@ -58,6 +64,7 @@ public class JwtTokenUtils {
      * 验证token
      */
     public static boolean validateToken(String token, User user){
+        if(user == null) return false;
         final String username = getUsername(token);
         return (username.equals(user.getUsername()) && isExpiration(token) == false);
     }

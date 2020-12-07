@@ -9,7 +9,7 @@ public enum Code {
     SUCCESS(200, "success"),
     FAILED(500, "error"),
     VALIDATE_FAILED(400, "参数校验失败"),
-    PERMISSION_TOKEN_EXPIRED(401, "未登录或token已过期"),
+    PERMISSION_TOKEN_EXPIRED(401, "token已过期"),
     PERMISSION_TOKEN_INVALID(402, "token解析异常"),
     PERMISSION_SIGNATURE_ERROR(403, "签名失败"),
     NO_LOGIN(405, "未登录"),

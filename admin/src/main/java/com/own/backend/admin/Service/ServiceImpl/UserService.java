@@ -7,6 +7,7 @@ import com.own.backend.admin.Entity.User;
 import com.own.backend.admin.Mapper.UserMapper;
 import com.own.backend.admin.Service.BaseInterface;
 import org.springframework.beans.BeanUtils;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,6 +36,8 @@ public class UserService extends ServiceImpl<UserMapper, User> implements BaseIn
         user.setUpdateBy("admin");
         login.setUid(id);
         BeanUtils.copyProperties(user, login);
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(16);
+        login.setPassword(encoder.encode(login.getPassword()));
         this.save(user);
         loginService.save(login);
         return true;
@@ -43,6 +46,7 @@ public class UserService extends ServiceImpl<UserMapper, User> implements BaseIn
     /**
      * 更新用户
      */
+    @Transactional(rollbackFor = Exception.class)
     public boolean updateUser(User user){
         return this.updateById(user);
     }
@@ -54,10 +58,9 @@ public class UserService extends ServiceImpl<UserMapper, User> implements BaseIn
         return this.getById(userId);
     }
 
-    @Override
     public User getByName(String name) {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda().eq(User::getUsername, name);
-        return getOne(queryWrapper);
+        return this.getOne(queryWrapper);
     }
 }
